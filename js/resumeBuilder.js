@@ -6,7 +6,8 @@ var bio = {
   "name" : "Kyungcheol Chang",
   "contacts" : {
     "email" : "kcfigaro@gmail.com",
-    "github" : "https://github.io/kcfigaro",
+    "mobile" : "82)10-7300-1312",
+    "github" : "https://github.com/kcfigaro",
     "location" : "Secho-4dong, Secho-gu, Seoul"
   },
   "welcomeMessage" : "KC's Resume",
@@ -210,22 +211,34 @@ $(document).click(function(loc) {
   logClicks(x,y);
 });
 
-function locationFinder() {
-  var locations = [];
-
-  for (var job in work.jobs) {
-    locations.push(work.jobs[job].location);
-  }
-
-  return locations;
-}
+// function locationFinder() {
+//   var locations = [];
+//
+//   for (var job in work.jobs) {
+//     locations.push(work.jobs[job].location);
+//   }
+//
+//   return locations;
+// }
 
 $("#main").append(internationalizeButton);
 $("#mapDiv").append(googleMap);
+
+function displayConnect() {
+  // $("#footerContacts").append(HTMLcontactGeneric);
+  var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+  var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+  var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+
+  $("#footerContacts").append(formattedMobile);
+  $("#footerContacts").append(formattedEmail);
+  $("#footerContacts").append(formattedGithub);
+}
+
+displayConnect();
 
 // function inName(name) {
 //   inname = name.toLocaleUpperCase();
 //   console.log(inname);
 //   return inname;
 // }
-
