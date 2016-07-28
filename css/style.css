@@ -110,7 +110,7 @@ a {
 
 .blue {
   /*background-color: #33b15d;*/
-  background-image: linear-gradient(120deg, #155799, #33b15d);
+  background: linear-gradient(120deg, #155799, #33b15d);
 }
 
 .orange-text {
@@ -135,8 +135,7 @@ a {
 /* TODO: Replace with image later */
 #header {
   /*background-color: #484848;*/
-  background-color: #6d819c;
-  background-image: linear-gradient(120deg, #155799, #159957);
+  background: linear-gradient(120deg, #155799, #159957);
 }
 
 .flex-box {
