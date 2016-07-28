@@ -1,226 +1,140 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
-var bio = {
-    "name": "Kyungcheol Chang",
-    "contacts": {
-        "email": "kcfigaro@gmail.com",
-        "mobile": "82)10-7300-1312",
-        "github": "https://github.com/kcfigaro",
-        "location": "Secho-4dong, Secho-gu, Seoul"
-    },
-    "welcomeMessage": "KC's Resume",
-    "role": "cloud engineer",
-    "skills": ["IaaS", "AWS architecturing", "Openstack engineering", "Process automation"],
-    "pic": "http://placekitten.com/185/145",
-    "display": "displayBio"
-};
+<!DOCTYPE html>
 
-var education = {
-    "schools": [{
-        "name": "Kyunghee University",
-        "degree": "Bachelor",
-        "major": "Computer Engineering",
-        "location": "Yeongdeok-dong, Giheung-gu, Yongin-si",
-        "dates": "2010"
-    }, {
-        "name": "Kyunghee University",
-        "degree": "Bachelor",
-        "major": "Electornic Engineering",
-        "location": "Yeongdeok-dong, Giheung-gu, Yongin-si",
-        "dates": "2010"
-    }],
-    "onlineCourses": [{
-        "title": "Software Defined Networking",
-        "school": "Coursera",
-        "dates": "2014",
-        "url": "https://www.coursera.org/signature/certificate/TAABNZFJ4Y"
-    }, {
-        "title": "An Introduction to Interactive Programming in Python",
-        "school": "Coursera",
-        "dates": "2015",
-        "url": "https://www.coursera.org/account/accomplishments/verify/C94947TX3E"
-    }],
-    "display": "displayEducation"
-};
+<!--
+This is an HTML document. It contains information about how elements in the website
+are arranged. In other words, it describes the layout of a website.
 
-var work = {
-    "jobs": [{
-        "employeer": "KT",
-        "title": "Software Engineer of Cloud Computing Service",
-        "location": "Omokgyo, Seoul",
-        "date": "Sep 2010 - Dec 2013",
-        "descrption": "Deploy public cloud, Involved in Ucloud infra automation project, Consulted cloud service"
-    }, {
-        "employeer": "SK Planet",
-        "title": "Cloud Computing Engineer, T-academy Tech Trainer",
-        "location": "264 Pangyo-ro, Seongnam-si, Gyeonggi-do",
-        "date": "Dec 2013 - July 2016",
-        "descrption": "Delivering Private IaaS(using in-house openstack), Delivering SKP products on AWS & other cloud, Teaching Public Cloud class in T academy"
-    }, {
-        "employeer": "NCSOFT",
-        "title": "Cloud Solution Architect",
-        "location": "12, Daewangpangyo 644, Bundang-gu, Seongnam-si, Gyeonggi-do",
-        "date": "Jun 2016 - in progress",
-        "descrption": "Delivering mobile games using cloud service"
-    }],
-    "display": "displayWork"
-};
+I can't wait to see the resumes you put together!
 
-var projects = {
-    "projects": [{
-        "title": "Deployed public cloud",
-        "date": "Sep 2010 - Dec 2012",
-        "descrption": "- Built cloud system using Cloudstack and launched public cloud service.<br>- Coordinated infra deploy management system and developed chef cookbooks.<br>- Created and verified ucloud Linux,Windows server images which is pre-configured operating system of ucloud virtual machines.<br>"
-    }, {
-        "title": "Involved in Ucloud infra automation project",
-        "date": "Sep 2010 - Dec 2013",
-        "descrption": "- Participated in chef engineering and handling auto-deployment management system.<br>- Integrated automation system on ucloud monitoring (Nagios, Cacti and Collectd).<br>"
-    }, {
-        "title": "Consulted cloud service",
-        "date": "Dec 2012 - Dec 2013",
-        "descrption": "- Built Virtual Private Zone for tech-driven company and support VPC engineering.<br>- Designed financial firm private cloud infra with cloudstack and handover.<br>"
-    }, {
-        "title": "Delivering Private Cloud",
-        "date": "Mar 2014 - July 2016",
-        "descrption": "- Design SKP in-house openstack architecture and cloud governance.<br>- Integrate openstack juno into SKP dev, stage and prodution environment and replace virtualization software solution and physical machine.<br>- Archived TCO reduction in infra operations with in-house cloud system.  (approx. 2K VM capacity)<br>"
-    }, {
-        "title": "Delivering SKP products on AWS & other cloud",
-        "date": "Dec 2013 - July 2016",
-        "descrption": "- Design AWS VPC with SKP network connectivity and establish SKP public cloud infra management policies include security, resource management and monitoring.<br>- Design product infra (Musicmate, LauncherPlanet and etc) to launch globally.<br>"
-    }, {
-        "title": "Teaching Public Cloud class in T academy",
-        "date": "Aug 2014 - July 2016",
-        "descrption": "- Teach essential of public cloud such as AWS VPC architecting, cloud design pattern and etc.<br>- One day class bimonthly from July 2014 and attend approx. 20 students per class.<br>"
-    }],
-    "display": "displayProject"
-};
+Cameron Pittman, Udacity Course Developer
+-->
 
-function displayBio() {
-    var formattedName = HTMLheaderName.replace("%data%", bio.name);
-    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-    var formattedBioPic = HTMLbioPic.replace("%data%", bio.pic);
+<!--
+The <head> of a website generally links to important resources the page will
+need to load. You'll see a lot of <link>s to CSS files for styles and
+<scripts> for JavaScript files to build interactions.
+-->
+<html>
+<head>
+  <!-- This tells the browser how to read the document. -->
+  <meta charset="utf-8">
 
-    $("#header").append(formattedName);
-    $("#header").append(formattedRole);
-    $("#header").append(formattedBioPic);
+  <!-- Tells the browser what the title of this page should be. -->
+  <title>Resume</title>
 
-    if (bio.skills.length > 0) {
-        $("#header").append(HTMLskillsStart);
+  <!-- Load the page styles. -->
+  <link href="css/style.css" rel="stylesheet">
 
-        for (var skill in bio.skills) {
-            if (bio.skills.hasOwnProperty(skill)) {
-                var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
-                $("#skills").append(formattedSkills);
-            }
-        }
+  <!--
+  jQuery is a common JavaScript library for reading and making changes to the
+  Document Object Model (DOM). The DOM is a tree that contains information
+  about what is actually visible on a website.
+
+  While HTML is a static document, the browser converts HTML to the
+  DOM and the DOM can change. In fact, JavaScript's power comes from
+  its ability to manipulate the DOM, which is essentially a JavaScript
+  object. When JavaScript makes something interesting happen on a
+  website, it's likely the action happened because JavaScript changed
+  the DOM. jQuery is fast and easy to use, but it doesn't do anything
+  you can't accomplish with vanilla (regular) JavaScript.
+  -->
+  <script src="js/jQuery.js"></script>
+
+  <!-- More on helper.js in the class -->
+  <script src="js/helper.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDC1q_TjwVsBHliijG39WBTNhCIZc8iVyw"></script>
+  <!--
+  Uncomment the <script> tag below when you're ready to add an interactive Google Map to your resume!
+  -->
+<!-- <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+
+  <meta name="viewport" content="width=device-width">
+</head>
+<body>
+  <div id="main">
+  <!-- You'll be deleting this line in the course -->
+
+    <!--
+    Everything from here to the <script> tag below is the skeleton of your
+    website. Your code will add information to each of the sections of the
+    resume below. You can pretty easily figure out what each section will
+    display by looking at the id or at what's written between the <h2> tags.
+    -->
+    <div id="header" class="center-content clear-fix header-img">
+      <ul id="topContacts" class="flex-box"></ul>
+    </div>
+    <div style="clear: both;"></div>
+    <div id="workExperience" class="gray">
+      <h2>Work Experience</h2>
+    </div>
+    <div id="projects">
+      <h2>Projects</h2>
+    </div>
+    <div id="education" class="gray">
+      <h2>Education</h2>
+    </div>
+    <div id="mapDiv">
+      <h2>Where I've Lived and Worked</h2>
+    </div>
+    <div id="lets-connect" class="dark-gray">
+      <h2 class="blue center-text">Let's Connect</h2>
+        <ul id="footerContacts" class="flex-box">
+      </ul>
+    </div>
+  </div>
+
+  <!--
+  The next line tells the browser where to download the JavaScript file you'll be
+  writing. In resumeBuilder.js, you'll be writing code that builds the resume
+  dynamically when this website, index.html, is opened.
+  -->
+  <script src="js/resumeBuilder.js"></script>
+
+
+  <!--
+  These scripts are written in JavaScript. You'll be breaking them down as part of
+  a quiz. Essentially, the next few lines are checking to see if you have not
+  changed each section of the resume. If you have not made any changes to a section
+  of the resume, then that part of the resume does not show up. More on this in the
+  course.
+  -->
+
+  <script>
+    // Notice how all of a sudden there's JavaScript inside this HTML
+    // document? You can write JavaScript between <script> tags. At the end of your
+    // JavaScript, don't forget the closing script tag with the slash (/).
+
+
+    // Also, this is a JavaScript style comment. You can comment in JavaScript with:
+
+    //   two slashes for all following characters on a single line, or
+
+    /*
+        an opening and closing set of slash asterisks for block comments.
+    */
+
+
+    if(document.getElementsByClassName('flex-item').length === 0) {
+      document.getElementById('topContacts').style.display = 'none';
     }
-}
-
-displayBio();
-
-function displayWork() {
-    for (var job in work.jobs) {
-        if (work.jobs.hasOwnProperty(job)) {
-            $("#workExperience").append(HTMLworkStart);
-
-            var formattedEmployeer = HTMLworkEmployer.replace("%data%", work.jobs[job].employeer);
-            var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-            var formattedEmployeerTitle = formattedEmployeer + formattedTitle;
-            $(".work-entry:last").append(formattedEmployeerTitle);
-
-            var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].date);
-            $(".work-entry:last").append(formattedDates);
-            var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].descrption);
-            $(".work-entry:last").append(formattedDescription);
-        }
+    if(document.getElementsByTagName('h1').length === 0) {
+      document.getElementById('header').style.display = 'none';
     }
-}
-
-displayWork();
-
-function displayEducation() {
-
-    for (var edu in education.schools) {
-        if (education.schools.hasOwnProperty(edu)) {
-            $("#education").append(HTMLschoolStart);
-
-            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[edu].name);
-            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[edu].degree);
-            var formattedSchoolNameDegree = formattedSchoolName + formattedSchoolDegree;
-            $(".education-entry:last").append(formattedSchoolNameDegree);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[edu].dates);
-            $(".education-entry:last").append(formattedSchoolDates);
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[edu].major);
-            $(".education-entry:last").append(formattedSchoolMajor);
-        }
+    if(document.getElementsByClassName('work-entry').length === 0) {
+      document.getElementById('workExperience').style.display = 'none';
     }
-
-    for (var online in education.onlineCourses) {
-        if (education.onlineCourses.hasOwnProperty(online)) {
-            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[online].title);
-            var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[online].school);
-            var formattedOnlineTitleSchool = formattedOnlineTitle + formattedOnlineSchool;
-            $(".education-entry:last").append(formattedOnlineTitleSchool);
-            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[online].dates);
-            $(".education-entry:last").append(formattedOnlineDates);
-            var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[online].url);
-            $(".education-entry:last").append(formattedOnlineURL);
-        }
+    if(document.getElementsByClassName('project-entry').length === 0) {
+      document.getElementById('projects').style.display = 'none';
     }
-}
-
-displayEducation();
-
-// projects.display = function() {
-function displayProject() {
-    for (var project in projects.projects) {
-        if (projects.projects.hasOwnProperty(project)) {
-            $("#projects").append(HTMLprojectStart);
-
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-            $(".project-entry:last").append(formattedProjectTitle);
-            var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].date);
-            $(".project-entry:last").append(formattedProjectDates);
-            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].descrption);
-            $(".project-entry:last").append(formattedProjectDescription);
-        }
+    if(document.getElementsByClassName('education-entry').length === 0) {
+      document.getElementById('education').style.display = 'none';
     }
-}
-
-// projects.display();
-displayProject();
-
-$(document).click(function(loc) {
-    var x = loc.pageX;
-    var y = loc.pageY;
-
-    console.log(x, y);
-    logClicks(x, y);
-});
-
-// function locationFinder() {
-//   var locations = [];
-//
-//   for (var job in work.jobs) {
-//     locations.push(work.jobs[job].location);
-//   }
-//
-//   return locations;
-// }
-
-$("#main").append(internationalizeButton);
-$("#mapDiv").append(googleMap);
-
-function displayConnect() {
-    // $("#footerContacts").append(HTMLcontactGeneric);
-    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-
-    $("#footerContacts").append(formattedMobile);
-    $("#footerContacts").append(formattedEmail);
-    $("#footerContacts").append(formattedGithub);
-}
-
-displayConnect();
+    if(document.getElementsByClassName('flex-item').length === 0) {
+      document.getElementById('lets-connect').style.display = 'none';
+    }
+    if(document.getElementById('map') === null) {
+      document.getElementById('mapDiv').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
