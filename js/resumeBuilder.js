@@ -16,8 +16,9 @@ var bio = {
         var formattedName = HTMLheaderName.replace(data, bio.name);
         var formattedRole = HTMLheaderRole.replace(data, bio.role);
         var formattedBioPic = HTMLbioPic.replace(data, bio.biopic);
+        var formattedWelcomeMsg = HTMLwelcomeMsg.replace(data, bio.welcomeMessage);
 
-        $("#header").append(formattedName, formattedRole, formattedBioPic);
+        $("#header").append(formattedName, formattedRole, formattedBioPic, formattedWelcomeMsg);
 
         var formattedLocation = HTMLlocation.replace(data, bio.contacts.location);
         var formattedMobile = HTMLmobile.replace(data, bio.contacts.mobile);
@@ -60,15 +61,17 @@ var education = {
         "url": "https://www.coursera.org/account/accomplishments/verify/C94947TX3E"
     }],
     display: function() {
-        education.schools.forEach(function(edu) {
+        education.schools.forEach(function(education) {
             $("#education").append(HTMLschoolStart);
-            var formattedSchoolName = HTMLschoolName.replace("%data%", edu.name);
-            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", edu.degree);
+            var formattedSchoolName = HTMLschoolName.replace("%data%", education.name);
+            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.degree);
             var formattedSchoolNameDegree = formattedSchoolName + formattedSchoolDegree;
             $(".education-entry:last").append(formattedSchoolNameDegree);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", edu.dates);
+            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.location);
+            $(".education-entry:last").append(formattedSchoolLocation);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.dates);
             $(".education-entry:last").append(formattedSchoolDates);
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", edu.majors);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.majors);
             $(".education-entry:last").append(formattedSchoolMajor);
         });
 
@@ -91,17 +94,19 @@ var work = {
         "title": "Software Engineer of Cloud Computing Service",
         "location": "Omokgyo, Seoul",
         "dates": "Sep 2010 - Dec 2013",
-        "description": "Deploy public cloud, Involved in Ucloud infra automation project, Consulted cloud service"
+        "description": "Deploy public cloud," +
+            "Involved in Ucloud infra automation project, Consulted cloud service"
     }, {
         "employer": "SK Planet",
         "title": "Cloud Computing Engineer, T-academy Tech Trainer",
         "location": "264 Pangyo-ro, Seongnam-si, Gyeonggi-do",
         "dates": "Dec 2013 - July 2016",
-        "description": "Delivering Private IaaS(using in-house openstack), Delivering SKP products on AWS & other cloud, Teaching Public Cloud class in T academy"
+        "description": "Delivering Private IaaS(using in-house openstack)," +
+              "Delivering SKP products on AWS & other cloud, Teaching Public Cloud class in T academy"
     }, {
         "employer": "NCSOFT",
         "title": "Cloud Solution Architect",
-        "location": "12, Daewangpangyo 644, Bundang-gu, Seongnam-si, Gyeonggi-do",
+        "location": "12, Daewangpangyo 644, Seongnam-si, Gyeonggi-do",
         "dates": "Jun 2016 - in progress",
         "description": "Delivering mobile games using cloud service"
     }],
@@ -109,10 +114,13 @@ var work = {
         work.jobs.forEach(function(job) {
             $("#workExperience").append(HTMLworkStart);
 
-            var formattedEmployeer = HTMLworkEmployer.replace("%data%", job.employeer);
+            var formattedEmployer = HTMLworkEmployer.replace("%data%", job.employer);
             var formattedTitle = HTMLworkTitle.replace("%data%", job.title);
-            var formattedEmployeerTitle = formattedEmployeer + formattedTitle;
-            $(".work-entry:last").append(formattedEmployeerTitle);
+            var formattedEmployerTitle = formattedEmployer + formattedTitle;
+            $(".work-entry:last").append(formattedEmployerTitle);
+
+            var formattedWorkLocation = HTMLworkLocation.replace("%data%", job.location);
+            $(".work-entry:last").append(formattedWorkLocation);
 
             var formattedDates = HTMLworkDates.replace("%data%", job.dates);
             $(".work-entry:last").append(formattedDates);
