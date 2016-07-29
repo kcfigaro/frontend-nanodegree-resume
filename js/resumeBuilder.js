@@ -4,30 +4,35 @@ var bio = {
         "email": "kcfigaro@gmail.com",
         "mobile": "82)10-7300-1312",
         "github": "https://github.com/kcfigaro",
-        "location": "Secho-4dong, Secho-gu, Seoul"
+        "location": "Secho-gu, Seoul"
     },
     "welcomeMessage": "KC's Resume",
     "role": "cloud engineer",
     "skills": ["IaaS", "AWS architecturing", "Openstack engineering", "Process automation"],
     "biopic": "http://placekitten.com/185/145",
     display: function() {
-        var formattedName = HTMLheaderName.replace("%data%", bio.name);
-        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-        var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+        var data = '%data%';
+
+        var formattedName = HTMLheaderName.replace(data, bio.name);
+        var formattedRole = HTMLheaderRole.replace(data, bio.role);
+        var formattedBioPic = HTMLbioPic.replace(data, bio.biopic);
 
         $("#header").append(formattedName, formattedRole, formattedBioPic);
 
-        var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-        var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-        var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+        var formattedLocation = HTMLlocation.replace(data, bio.contacts.location);
+        var formattedMobile = HTMLmobile.replace(data, bio.contacts.mobile);
+        var formattedEmail = HTMLemail.replace(data, bio.contacts.email);
+        var formattedGithub = HTMLgithub.replace(data, bio.contacts.github);
 
-        $("#footerContacts").append(formattedMobile, formattedEmail, formattedGithub);
+        $("#topContacts, #footerContacts").append(formattedLocation, formattedMobile, formattedEmail);
+        $("#footerContacts").append(formattedGithub);
+
 
         if (bio.skills.length > 0) {
             $("#header").append(HTMLskillsStart);
 
             bio.skills.forEach(function(skill) {
-                var formattedSkills = HTMLskills.replace("%data%", skill);
+                var formattedSkills = HTMLskills.replace(data, skill);
                 $("#skills").append(formattedSkills);
             });
         }
@@ -38,17 +43,10 @@ var education = {
     "schools": [{
         "name": "Kyunghee University",
         "degree": "Bachelor",
-        "majors": "Computer Engineering",
+        "majors": ["Computer Engineering", "Electornic Engineering"],
         "location": "Yeongdeok-dong, Giheung-gu, Yongin-si",
         "dates": "2010",
-        "url":""
-    }, {
-        "name": "Kyunghee University",
-        "degree": "Bachelor",
-        "majors": "Electornic Engineering",
-        "location": "Yeongdeok-dong, Giheung-gu, Yongin-si",
-        "dates": "2010",
-        "url":""
+        "url": ""
     }],
     "onlineCourses": [{
         "title": "Software Defined Networking",
@@ -89,23 +87,23 @@ var education = {
 
 var work = {
     "jobs": [{
-        "employeer": "KT",
+        "employer": "KT",
         "title": "Software Engineer of Cloud Computing Service",
         "location": "Omokgyo, Seoul",
         "dates": "Sep 2010 - Dec 2013",
-        "descrption": "Deploy public cloud, Involved in Ucloud infra automation project, Consulted cloud service"
+        "description": "Deploy public cloud, Involved in Ucloud infra automation project, Consulted cloud service"
     }, {
-        "employeer": "SK Planet",
+        "employer": "SK Planet",
         "title": "Cloud Computing Engineer, T-academy Tech Trainer",
         "location": "264 Pangyo-ro, Seongnam-si, Gyeonggi-do",
         "dates": "Dec 2013 - July 2016",
-        "descrption": "Delivering Private IaaS(using in-house openstack), Delivering SKP products on AWS & other cloud, Teaching Public Cloud class in T academy"
+        "description": "Delivering Private IaaS(using in-house openstack), Delivering SKP products on AWS & other cloud, Teaching Public Cloud class in T academy"
     }, {
-        "employeer": "NCSOFT",
+        "employer": "NCSOFT",
         "title": "Cloud Solution Architect",
         "location": "12, Daewangpangyo 644, Bundang-gu, Seongnam-si, Gyeonggi-do",
         "dates": "Jun 2016 - in progress",
-        "descrption": "Delivering mobile games using cloud service"
+        "description": "Delivering mobile games using cloud service"
     }],
     display: function() {
         work.jobs.forEach(function(job) {
@@ -119,7 +117,7 @@ var work = {
             var formattedDates = HTMLworkDates.replace("%data%", job.dates);
             $(".work-entry:last").append(formattedDates);
 
-            var formattedDescription = HTMLworkDescription.replace("%data%", job.descrption);
+            var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
             $(".work-entry:last").append(formattedDescription);
         });
     }
@@ -129,33 +127,33 @@ var projects = {
     "projects": [{
         "title": "Deployed public cloud",
         "dates": "Sep 2010 - Dec 2012",
-        "descrption": "- Built cloud system using Cloudstack and launched public cloud service.<br>- Coordinated infra deploy management system and developed chef cookbooks.<br>- Created and verified ucloud Linux,Windows server images which is pre-configured operating system of ucloud virtual machines.<br>",
-        "images" : []
+        "description": "- Built cloud system using Cloudstack and launched public cloud service.<br>- Coordinated infra deploy management system and developed chef cookbooks.<br>- Created and verified ucloud Linux,Windows server images which is pre-configured operating system of ucloud virtual machines.<br>",
+        "images": ["https://ucloudbiz.olleh.com/images/c_common/img_console_title01.gif", "https://cloudstack.apache.org/images/new-logo-sm.png"]
     }, {
         "title": "Involved in Ucloud infra automation project",
         "dates": "Sep 2010 - Dec 2013",
-        "descrption": "- Participated in chef engineering and handling auto-deployment management system.<br>- Integrated automation system on ucloud monitoring (Nagios, Cacti and Collectd).<br>",
-        "images" : []
+        "description": "- Participated in chef engineering and handling auto-deployment management system.<br>- Integrated automation system on ucloud monitoring (Nagios, Cacti and Collectd).<br>",
+        "images": ["https://quickleft.com/wp-content/uploads/OC_Chef_Logo_small.jpg"]
     }, {
         "title": "Consulted cloud service",
         "dates": "Dec 2012 - Dec 2013",
-        "descrption": "- Built Virtual Private Zone for tech-driven company and support VPC engineering.<br>- Designed financial firm private cloud infra with cloudstack and handover.<br>",
-        "images" : []
+        "description": "- Built Virtual Private Zone for tech-driven company and support VPC engineering.<br>- Designed financial firm private cloud infra with cloudstack and handover.<br>",
+        "images": []
     }, {
         "title": "Delivering Private Cloud",
         "dates": "Mar 2014 - July 2016",
-        "descrption": "- Design SKP in-house openstack architecture and cloud governance.<br>- Integrate openstack juno into SKP dev, stage and prodution environment and replace virtualization software solution and physical machine.<br>- Archived TCO reduction in infra operations with in-house cloud system.  (approx. 2K VM capacity)<br>",
-        "images" : []
+        "description": "- Design SKP in-house openstack architecture and cloud governance.<br>- Integrate openstack juno into SKP dev, stage and prodution environment and replace virtualization software solution and physical machine.<br>- Archived TCO reduction in infra operations with in-house cloud system.  (approx. 2K VM capacity)<br>",
+        "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/The_OpenStack_logo.svg/150px-The_OpenStack_logo.svg.png"]
     }, {
         "title": "Delivering SKP products on AWS & other cloud",
         "dates": "Dec 2013 - July 2016",
-        "descrption": "- Design AWS VPC with SKP network connectivity and establish SKP public cloud infra management policies include security, resource management and monitoring.<br>- Design product infra (Musicmate, LauncherPlanet and etc) to launch globally.<br>",
-        "images" : []
+        "description": "- Design AWS VPC with SKP network connectivity and establish SKP public cloud infra management policies include security, resource management and monitoring.<br>- Design product infra (Musicmate, LauncherPlanet and etc) to launch globally.<br>",
+        "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/AmazonWebservices_Logo.svg/200px-AmazonWebservices_Logo.svg.png", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Microsoft_Azure_Logo.svg/200px-Microsoft_Azure_Logo.svg.png"]
     }, {
         "title": "Teaching Public Cloud class in T academy",
         "dates": "Aug 2014 - July 2016",
-        "descrption": "- Teach essential of public cloud such as AWS VPC architecting, cloud design pattern and etc.<br>- One day class bimonthly from July 2014 and attend approx. 20 students per class.<br>",
-        "images" : []
+        "description": "- Teach essential of public cloud such as AWS VPC architecting, cloud design pattern and etc.<br>- One day class bimonthly from July 2014 and attend approx. 20 students per class.<br>",
+        "images": ["https://tacademy.sktechx.com/img/front/common/t_logo.jpg"]
     }],
     display: function() {
         projects.projects.forEach(function(project) {
@@ -167,8 +165,13 @@ var projects = {
             var formattedProjectDates = HTMLprojectDates.replace("%data%", project.dates);
             $(".project-entry:last").append(formattedProjectDates);
 
-            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.descrption);
+            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.description);
             $(".project-entry:last").append(formattedProjectDescription);
+
+            project.images.forEach(function(image) {
+                var formattedProjectImage = HTMLprojectImage.replace("%data%", image);
+                $(".project-entry:last").append(formattedProjectImage);
+            });
         });
     }
 };
